@@ -8,50 +8,55 @@
 }
 
 .fr {
-  	float: right;
-  	font-size: 14px;
+    float: right;
+    font-size: 14px;
 }
 
 body {
-  	margin:0;
-  	padding: 0;
+    margin: 0;
+    padding: 0;
     background-color: #00334B;
-  	color: white;
+    color: white;
     font-family: Lobster, Microsoft Yahei;
 }
 
 .contatiner {
-  	max-width: 700px;
-  	margin: 0 auto;/*div居中显示*/
+    max-width: 700px;
+    margin: 0 auto;
+    /*div居中显示*/
 }
 
-.add-content, .button-add-todo {
-  	padding: 10px 0;/*第一个值代表上下内边距,第二个就是左右内边距*/
-  	border-radius:3px;/*圆角*/
-  	border: none;
+.add-content,
+.button-add-todo {
+    padding: 10px 14px;
+    /*第一个值代表上下内边距,第二个就是左右内边距*/
+    border-radius: 3px;
+    /*圆角*/
+    border: none;
 }
 
 h1 {
-	 text-align: center;
-   font-size: 40px;
+    text-align: center;
+    font-size: 40px;
 }
 
 .add-task .add-content {
-  	width: 84%;
-  	margin-right: 1%;
-  	float: left;
+    width: 84%;
+    margin-right: 1%;
+    float: left;
 }
 
 .button-add-todo {
-  	width: 15%;
-  	background-color: #0E98DA;
+    width: 15%;
+    background-color: #0E98DA;
     color: black;
-  	cursor: pointer;/*鼠标悬浮形状*/
+    cursor: pointer;
+    /*鼠标悬浮形状*/
     font-weight: 600;
 }
 
 .button-add-todo:hover {
-	 background-color: #01547b;
+    background-color: #01547b;
 }
 
 .list-button {
@@ -76,20 +81,20 @@ h1 {
 }
 
 .list {
-  	width: 100%;
-  	/* margin-top: 10px; */
+    width: 100%;
+    /* margin-top: 10px; */
 }
 
 .task-item {
-  	padding: 5px 10px 10px 10px;
-  	background-color: white;
-  	border-radius: 3px;
-  	color: black;
-  	margin-bottom: 2px;
+    padding: 5px 10px 10px 10px;
+    background-color: white;
+    border-radius: 3px;
+    color: black;
+    margin-bottom: 2px;
 }
 
 .task-item:hover {
-  	background-color: #ddd;
+    background-color: #ddd;
 }
 
 .task-item-title {
@@ -98,7 +103,7 @@ h1 {
 }
 
 .item-title {
-	 margin-left: 15px;
+    margin-left: 15px;
 
 }
 
@@ -108,12 +113,13 @@ h1 {
 
 
 .delete {
-	 cursor: pointer;
-   color: #888;
+    cursor: pointer;
+    color: #888;
+    padding-left: 10px;
 }
 
 .delete:hover {
-	 color: black;
+    color: black;
 }
 
 .ischeck {
@@ -126,7 +132,7 @@ h1 {
 
 /*点击详情弹出的框*/
 .task-detail {
-  	display: none;
+    display: none;
     padding: 15px 10px 10px 10px;
     background-color: #c1ffc9;
     border-radius: 3px;
@@ -134,10 +140,10 @@ h1 {
     margin-top: 5px;
 }
 
-.detail-title{
-  	width: 40%;
-  	height: 28px;
-  	margin-left: 45px;
+.detail-title {
+    width: 40%;
+    height: 28px;
+    margin-left: 45px;
     margin-bottom: 12px;
 }
 
@@ -153,8 +159,8 @@ h1 {
     height: 100px;
     min-width: 80%;
     min-height: 100px;
-  	max-width: 80%;
-  	max-height: 100px;
+    max-width: 80%;
+    max-height: 100px;
     margin-left: 22px;
     margin-bottom: 8px;
 }
