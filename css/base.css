@@ -143,6 +143,7 @@ h1 {
     height: 28px;
     margin-left: 45px;
     margin-bottom: 12px;
+    padding: 8px;
 }
 
 .detail-datetime {
@@ -150,6 +151,7 @@ h1 {
     height: 28px;
     margin-left: 42px;
     margin-bottom: 10px;
+    padding: 8px;
 }
 
 .detail-content {
@@ -161,6 +163,7 @@ h1 {
     max-height: 100px;
     margin-left: 22px;
     margin-bottom: 8px;
+    padding: 8px 8px;
 }
 
 .ps {
