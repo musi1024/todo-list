@@ -39,34 +39,34 @@ var myTodoModule = (function () {
 				task_list[i].level = ''
 			}
 			var oneItem = `
-								<div class="task-item" >
-										<div class='task-item-title' style="color:${task_list[i].color}">
-												<input class='check' type="checkbox" />
-												<span class="item-title">${task_list[i].title}</span>
-												<span class="item-level">${task_list[i].level}</span>
-												<span class="fr">
-														<span class='item-datetime'>${task_list[i].datetime}</span>
-														<span class="action delete">delete</span>
-												</span>
-										</div>
-										<div class="task-detail">
-												<span>Title<input type="text" class="detail-title" value='${task_list[i].title}' /></span><br/>
-												<span>
-														<span class="ps">Content</span>
-														<textarea class="detail-content" >${task_list[i].content}</textarea>
-												</span><br/>
-												<span>Date<input type="text" class="detail-datetime" value='${task_list[i].datetime}' /></span><br/>
-												<span>Level</span>
-												<span class='detail-level'>
-														<input type="button" class='level0 button-level' value=" " >
-														<input type="button" class='level1 button-level' name='green' value="!" style='background-color: green'>
-														<input type="button" class='level2 button-level' value="!!" style='background-color: #ffb300'>
-														<input type="button" class='level3 button-level' value="!!!" style='background-color: red'>
-												</span><br/>
-												<button type="button" class='button-detail-update'>save</button>
-										</div>
-								</div>
-							`
+				<div class="task-item" >
+						<div class='task-item-title' style="color:${task_list[i].color}">
+								<input class='check' type="checkbox" />
+								<span class="item-title">${task_list[i].title}</span>
+								<span class="item-level">${task_list[i].level}</span>							
+								<span class="fr">
+										<span class='item-datetime'>${task_list[i].datetime}</span>
+										<span class="action delete">delete</span>
+								</span>
+						</div>
+						<div class="task-detail">
+								<span>Title<input type="text" class="detail-title" value='${task_list[i].title}' /></span><br/>
+								<span>
+										<span class="ps">Content</span>
+										<textarea class="detail-content" >${task_list[i].content}</textarea>
+								</span><br/>
+								<span>Date<input type="text" class="detail-datetime" value='${task_list[i].datetime}' /></span><br/>
+								<span>Level</span>
+								<span class='detail-level'>
+										<input type="button" class='level0 button-level' value=" " >
+										<input type="button" class='level1 button-level' name='green' value="!" style='background-color: green'>
+										<input type="button" class='level2 button-level' value="!!" style='background-color: #ffb300'>
+										<input type="button" class='level3 button-level' value="!!!" style='background-color: red'>
+								</span><br/>
+								<button type="button" class='button-detail-update'>save</button>
+						</div>
+				</div>
+			`
 			taskHtmlStr = taskHtmlStr + oneItem
 		}
 		$(taskHtmlStr).appendTo($task_list)
@@ -118,11 +118,27 @@ var myTodoModule = (function () {
 	var addTask = function () {
 		var new_task = {}
 		new_task.title = $add_content.val(); //获取输入框内容
-		task_list.push(new_task) //更新数组操作
-		store.set('task_list', task_list)
-		initRenderIndex()
-		$add_content.val('')
+		var titleLen = checkTitleLen(new_task.title)
+		if (titleLen <= 60) {
+			task_list.push(new_task) //更新数组操作
+			store.set('task_list', task_list)
+			initRenderIndex()
+			$add_content.val('')
+		} else {
+			alert('Sorry, Unable to enter more than 60 characters!')
+		}
+	}
 
+	var checkTitleLen = function (title) {
+		var titleLen = 0;
+		for (let i = 0; i < title.length; i++) {
+			if (title.charCodeAt(i) > 127 || title.charCodeAt(i) == 94) {
+				titleLen += 2
+			} else {
+				titleLen += 1
+			}
+		}
+		return titleLen
 	}
 
 	// 监听 list 切换
@@ -188,16 +204,21 @@ var myTodoModule = (function () {
 			} else {
 				dataTask.color = ''
 			}
-			task_list[detailIndex] = $.extend(task_list[detailIndex], dataTask)
-			store.set('task_list', task_list)
-			console.log(dataTask.level);
-			$(this).parent().parent().find($('.item-title')).html(dataTask.title)
-			$(this).parent().parent().find($('.item-datetime')).html(dataTask.datetime)
-			$(this).parent().parent().find($('.item-level')).html(dataTask.level)
-			$(this).parent().parent().find($('.task-item-title')).css({
-				'color': dataTask.color
-			})
-			$(this).parent().slideToggle('slow')
+			var titleLen = checkTitleLen(dataTask.title)
+			if (titleLen <= 60) {
+				task_list[detailIndex] = $.extend(task_list[detailIndex], dataTask)
+				store.set('task_list', task_list)
+				console.log(dataTask.level);
+				$(this).parent().parent().find($('.item-title')).html(dataTask.title)
+				$(this).parent().parent().find($('.item-datetime')).html(dataTask.datetime)
+				$(this).parent().parent().find($('.item-level')).html(dataTask.level)
+				$(this).parent().parent().find($('.task-item-title')).css({
+					'color': dataTask.color
+				})
+				$(this).parent().slideToggle('slow')
+			} else {
+				alert('Sorry, Your title is more than 60 characters!')
+			}
 		})
 	}
 

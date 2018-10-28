@@ -104,13 +104,11 @@ h1 {
 
 .item-title {
     margin-left: 15px;
-
 }
 
 .item-level {
     font-weight: 600;
 }
-
 
 .delete {
     cursor: pointer;
